@@ -6,11 +6,7 @@ vectors and memoization vs Java ArrayList and type hints.
 ## Usage
 
 ```bash
-lein repl
-```
-
-```clj
-(run!)
+lein run
 ```
 
 ## Results

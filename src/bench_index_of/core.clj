@@ -42,30 +42,31 @@
   (memoize string-index-of))
 
 (def upto
-  999999) ;; 1M
+  1000000)
 
 (defn run!
   []
-  (do
-    (println "")
-    (println (str "Running 1M tests with each method:"))
-    (println "")
-    (println "(.indexOf clj-vec \"test-string\")")
-    (time (dotimes [n upto] (.indexOf             clj-vec "test-string")))
-    (println "")
-    (println "(index-of clj-vec \"test-string\")")
-    (time (dotimes [n upto] (index-of             clj-vec "test-string")))
-    (println "")
-    (println "(index-of-memo clj-vec \"test-string\")")
-    (time (dotimes [n upto] (index-of-memo        clj-vec "test-string")))
-    (println "")
-    (println "(string-index-of java-al \"test-string\")")
-    (time (dotimes [n upto] (string-index-of      java-al "test-string")))
-    (println "")
-    (println "(string-index-of-memo java-al \"test-string\")")
-    (time (dotimes [n upto] (string-index-of-memo java-al "test-string")))
-    (println "")))
+  (dotimes [i 5]
+    (do
+      (println "")
+      (println  (str "Running 1M tests with each method (" (+ 1 i) " of 5)"))
+      (println "")
+      (println "(.indexOf clj-vec \"test-string\")")
+      (time (dotimes [_ upto] (.indexOf             clj-vec "test-string")))
+      (println "")
+      (println "(index-of clj-vec \"test-string\")")
+      (time (dotimes [_ upto] (index-of             clj-vec "test-string")))
+      (println "")
+      (println "(index-of-memo clj-vec \"test-string\")")
+      (time (dotimes [_ upto] (index-of-memo        clj-vec "test-string")))
+      (println "")
+      (println "(string-index-of java-al \"test-string\")")
+      (time (dotimes [_ upto] (string-index-of      java-al "test-string")))
+      (println "")
+      (println "(string-index-of-memo java-al \"test-string\")")
+      (time (dotimes [_ upto] (string-index-of-memo java-al "test-string")))
+      (println ""))))
 
 (defn -main
   []
-  run!)
+  (run!))

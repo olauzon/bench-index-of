@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.5.1"]]
   :main bench-index-of.core
   :global-vars { *warn-on-reflection* true }
-  :aot :all)
+  :aot :all
+  :jvm-opts ["-Xmx1024mb" "-server"])
